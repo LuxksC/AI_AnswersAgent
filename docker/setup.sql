@@ -1,0 +1,1 @@
+CREATE EXTENSION IF NOT EXISTS vector; -- Ativa a extensão de vetores
