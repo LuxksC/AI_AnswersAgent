@@ -1,0 +1,17 @@
+import { pgTable, text, timestamp, uuid } from 'drizzle-orm/pg-core';
+import { rooms } from './rooms.ts';
+
+export const questions = pgTable(
+  'questions', // Nome da tabela
+  {
+    id: uuid().primaryKey().defaultRandom(),
+    roomId: uuid()
+      .references(() => rooms.id)
+      .notNull(),
+    question: text().notNull(),
+    answer: text(),
+    createdAt: timestamp().defaultNow().notNull(),
+    updatedAt: timestamp(),
+    deletedAt: timestamp(),
+  }
+);
